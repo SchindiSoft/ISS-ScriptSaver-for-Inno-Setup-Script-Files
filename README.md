@@ -3,7 +3,7 @@
 Dieses Autoit-Tool ermöglicht die automatische Sicherung von Änderungen vor der Kompilierung eines Inno Setup Scripts: Ich erstelle gerne kleine Tools mit der Autoit Skriptsprache... 
 Dies ist besonders nützlich, wenn das Script itself in das Setup File mit hineinkopiert werden soll, um es später bei Bedarf wieder 1:1 (z.B.: mit InnoUnp...) herstellen zu können..
 
-Neu für die neue Inno Setu 7 Version ist die Spracherkennung auch für die deutsche Oberfläche!
+Neu ist die Spracherkennung auch für die deutsche Oberfläche des neuen Inno Setup 7 Editor!
 
 Vorbereitung:
 Mein Programm "ISS-ScriptSaver.exe" in das Programmverzeichnis der jeweiligen Version des Inno Setup Kompiler
