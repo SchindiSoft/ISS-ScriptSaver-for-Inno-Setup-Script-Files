@@ -5,7 +5,7 @@ Dies ist besonders nützlich, wenn das Script itself in das Setup File mit hinei
 
 Vorbereitung:
 Mein Programm "ISS-ScriptSaver.exe" in das Programmverzeichnis der jeweiligen Version des Inno Setup Kompiler
-z.B.: in das Unterverzeichnis "Plugins" stellen...
+z.B.: in ein Unterverzeichnis "Plugins" stellen...
 
 In den Scripten, die dieses Feature erhalten sollen, müssen im Kopf folgende Zeilen eingefügt werden:
 Achtung: Es darf nur ein *.iss File im Source Verzeichnis enthalten sein - sonst SourceFileName fix angeben!
