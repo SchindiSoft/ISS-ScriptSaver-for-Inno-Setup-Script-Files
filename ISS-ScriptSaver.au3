@@ -50,6 +50,10 @@ EndIf
 ;Ermittle Sprache:
 ;Ermittle Sprache:
 ;könnte man auch über Registry Eintrag: HKEY_CURRENT_USER\Software\Jordan Russell\Inno Setup\Options Wert von Language ermitteln (3=GER)
+;Dazu müsste man auch noch die aktuell laufende Inno Setup Instanz abfragen (z.B.: mit 
+;Local $InnoVer=WinGetTitle($issname & " – Inno Setup Compiler")
+;if StringInStr($InnoVer,"Inno Setup Compiler 7." ) Then...
+
 Send ("!h")
 Sleep(500)
 Send ("ü") ;ü nuir bei Deutsch!
