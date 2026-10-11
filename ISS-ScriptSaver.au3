@@ -48,10 +48,12 @@ EndIf
 
 
 ;Ermittle Sprache:
+;Ermittle Sprache:
+;könnte man auch über Registry Eintrag: HKEY_CURRENT_USER\Software\Jordan Russell\Inno Setup\Options Wert von Language ermitteln (3=GER)
 Send ("!h")
 Sleep(500)
 Send ("ü") ;ü nuir bei Deutsch!
-Send ("{RIGHT}") ;;verhindert start eines Hilfemenü Eintrages wenn nicht Deutsch...
+Send ("{RIGHT}") ;;verhindert den ungewollten Start eines Hilfemenü Eintrages wenn nicht Deutsch...
 
 WinWait("About Inno Setup","",3)
 if WinExists("About Inno Setup") then
