@@ -52,4 +52,5 @@ Ein eigener Startmenü-Deinstallationseintrag kann dann auch noch unter [Icons] 
 Name: "{group}\{#SourceBaseName} Uninstall"; Filename: {uninstallexe};
 ...
 
-Code siehe angefügte ISS-ScriptSaver.au3
+Code:
+siehe angefügte ISS-Runner.au3
