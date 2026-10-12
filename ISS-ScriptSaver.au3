@@ -46,30 +46,48 @@ Exit(4)
 
 EndIf
 
+Local $InnoVer=WinGetTitle($issname & " – Inno Setup Compiler")
 
+if StringInStr($InnoVer," – Inno Setup Compiler 4.") or StringInStr($InnoVer," – Inno Setup Compiler 5.") or StringInStr($InnoVer," – Inno Setup Compiler 6.") Then
+	$InnoVer="<7"
+EndIf
+
+;MsgBox( 16,$Titel,$InnoVer)
 ;Ermittle Sprache:
 ;könnte man auch über Registry Eintrag: HKEY_CURRENT_USER\Software\Jordan Russell\Inno Setup\Options Wert von Language ermitteln (3=GER)
-;Dazu müsste man auch noch die aktuell laufende Inno Setup Instanz abfragen (z.B.: mit 
-;Local $InnoVer=WinGetTitle($issname & " – Inno Setup Compiler")
-;if StringInStr($InnoVer," – Inno Setup Compiler 5." ) or StringInStr($InnoVer," – Inno Setup Compiler 6." ) Then...
+;Ist der Eintrag NICHT vorhanden, so wird "ENG" als default angenommen!
+Local  $LangID = RegRead("HKEY_CURRENT_USER\Software\Jordan Russell\Inno Setup\Options", "Language" )
 
-Send ("!h")
-Sleep(500)
-Send ("ü") ;ü nuir bei Deutsch!
-Send ("{RIGHT}") ;;verhindert den ungewollten Start eines Hilfemenü Eintrages wenn nicht Deutsch...
+;Send ("!h")
+;Sleep(500)
+;Send ("ü") ;ü nuir bei Deutsch!
+;Send ("{RIGHT}") ;;verhindert den ungewollten Start eines Hilfemenü Eintrages wenn nicht Deutsch...
 
-WinWait("About Inno Setup","",3)
-if WinExists("About Inno Setup") then
+;WinWait("About Inno Setup","",3)
+;if WinExists("About Inno Setup") then
+;	$Lang="GER"
+;WinClose("About Inno Setup")
+;Else
+;	$Lang="ENG"
+;EndIf
+
+
+if $InnoVer="<7" Then  ;Alle anderen derzeit nur "ENG"
+	$Lang="ENG"
+Else
+if $LangID="3" Then
 	$Lang="GER"
-WinClose("About Inno Setup")
 Else
 	$Lang="ENG"
 EndIf
+EndIf
+
+;MsgBox( 16,$Titel,$Lang)
 
 $erg=MsgBox(64 + 1, $Titel , "Aktuelles ISS Script:" & Chr(13) & $issname & Chr(13) & "wird jetzt zuerst automatisch gesichert!" & Chr(13) & Chr(13) & _
 "Diese Meldung verschwindet auch von selbst...", 3)
 ;MsgBox(64, $Titel , $erg)
-if $erg = 2 then Exit(2)
+if $erg = 2 Then Exit(2)
 
 ;PDFEditor-Stempel&Tools.iss – Inno Setup Compiler 6.7.1 – Non-commercial use only
 WinActivate($issname & " – Inno Setup Compiler")
@@ -95,11 +113,18 @@ Sleep(500)
 Send ("a")
 EndIf
 
-if $Lang="GER" Then
-WinWait("Speichern unter","", 3)
-Else
-WinWait("Save as","", 3)
+Local $i = 0
+While $i<30
+	Sleep(100)
+$i=$i+1
+if WinExists("Speichern unter", "") Then
+	ExitLoop
 EndIf
+if WinExists("Save as", "") Then
+	ExitLoop
+EndIf
+WEnd
+
 
 if Not WinExists("Speichern unter") Then
 if Not WinExists("Save as") Then
@@ -128,28 +153,34 @@ $Savetxtde = "Speichern unter bestätigen"
 $Savetxten = "Confirm Save As"
 EndIf
 
-
-WinWaitActive($Savetxtde, "",3)
-if WinActive($Savetxtde, "") Then
+$i = 0
+While $i<30
+	Sleep(100)
+$i=$i+1
+if WinExists($Savetxtde, "") Then
 	SendKeepActive($Savetxtde, "")
-	if WinActive($Savetxtde, "") Then
+	if WinExists($Savetxtde, "") Then
 	send ("j")
 	EndIf
-	if WinActive($Savetxtde, "") Then
+	if WinExists($Savetxtde, "") Then
 	send ("y")
 	EndIf
-Else
-WinWaitActive($Savetxten, "",3)
-if WinActive($Savetxten, "") Then
+	ExitLoop
+EndIf
+if WinExists($Savetxten, "") Then
 	SendKeepActive($Savetxten, "")
-	if WinActive($Savetxten, "") Then
+	if WinExists($Savetxten, "") Then
 	send ("y")
 	EndIf
-	if WinActive($Savetxten, "") Then
+	if WinExists($Savetxten, "") Then
 	send ("j")
 	EndIf
+	ExitLoop
 EndIf
-EndIf
+WEnd
+
+Exit
+
 
 
 ;Es wurden die msg Fenster auf SystemModal umgestellt damit sie im Vordergrund erscheinen
