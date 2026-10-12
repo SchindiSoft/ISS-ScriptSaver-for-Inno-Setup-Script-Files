@@ -53,4 +53,4 @@ Name: "{group}\{#SourceBaseName} Uninstall"; Filename: {uninstallexe};
 ...
 
 Code:
-siehe angefügte ISS-Runner.au3
+siehe angefügte ISS-ScriptSaver.au3
