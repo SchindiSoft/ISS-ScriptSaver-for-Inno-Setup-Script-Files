@@ -1,4 +1,3 @@
-;#AutoIt3Wrapper_Run_After="C:\Users\User\Documents\My QM\Plugins\Run_UPX_SIGN_LRG.exe" %out% -MODE=2
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_Run_After=""%scitedir%\..\Extras\AutoUPX.exe" "%out%""
 
