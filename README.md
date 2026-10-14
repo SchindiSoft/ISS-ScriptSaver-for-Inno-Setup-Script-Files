@@ -1,13 +1,15 @@
 # ISS-ScriptSaver
 
-Dieses Autoit-Tool ermöglicht die automatische Sicherung von Änderungen vor der Kompilierung eines Inno Setup Scripts: Ich erstelle gerne kleine Tools mit der Autoit Skriptsprache... 
+Dieses Autoit-Tool ermöglicht die automatische Sicherung von Änderungen vor der Kompilierung eines Inno Setup Scripts: 
 Dies ist besonders nützlich, wenn das Script itself in das Setup File mit hineinkopiert werden soll, um es später bei Bedarf wieder 1:1 (z.B.: mit InnoUnp...) herstellen zu können..
 
 Neu ist die Spracherkennung auch für die deutsche Oberfläche des neuen Inno Setup 7 Editor!
 
 Vorbereitung:
+Die ISS-ScriptSaver.au3 Datei mit (einem natürlich vorher installiertem) Autoit3 kompilieren... Eine von mir erstellte und mit UPX komprimierte, und von mir selbstsignierte EXE Datei, ist auch im Anhang...
+Ich verwende Autoit Freeware-Skriptsprache gerne mal wieder um schnell kleine praktische Tools zu erstellen...
 Mein Programm "ISS-ScriptSaver.exe" in das Programmverzeichnis der jeweiligen Version des Inno Setup Kompiler
-z.B.: in ein Unterverzeichnis "Plugins" stellen...
+z.B.: in ein Unterverzeichnis "Plugins" stellen, Pfad später im ISS Script anpassen...
 
 In den Scripten, die dieses Feature erhalten sollen, müssen im Kopf folgende Zeilen eingefügt werden:
 Achtung: Es darf nur ein *.iss File im Source Verzeichnis enthalten sein - sonst SourceFileName fix angeben!
