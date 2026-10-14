@@ -1,5 +1,16 @@
+;#AutoIt3Wrapper_Run_After="C:\Users\User\Documents\My QM\Plugins\Run_UPX_SIGN_LRG.exe" %out% -MODE=2
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_Run_After=""%scitedir%\..\Extras\AutoUPX.exe" "%out%""
+
+#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.2.12.1
+ Author:         M. Schindlauer
+
+ Script Function:
+	Template AutoIt script.
+
+#ce ----------------------------------------------------------------------------
 
 ; Script Start - Add your code below here
 $Titel = "ISS Script Saver"
@@ -114,12 +125,9 @@ if WinExists("Save as", "") Then
 EndIf
 WEnd
 
-
-if Not WinExists("Speichern unter") Then
-if Not WinExists("Save as") Then
+if Not WinExists("Speichern unter") and Not WinExists("Save as") Then
 MsgBox(16,$Titel,"Aktuelles ISS Script:" & Chr(13) & $issname & Chr(13) & "konnte nicht gesichert werden!")
 Exit(4)
-EndIf
 EndIf
 
 if WinExists("Speichern unter", $issname) then
