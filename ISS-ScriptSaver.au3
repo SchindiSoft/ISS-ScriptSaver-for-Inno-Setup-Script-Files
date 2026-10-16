@@ -1,5 +1,16 @@
+;#AutoIt3Wrapper_Run_After="C:\Users\User\Documents\My QM\Plugins\Run_UPX_SIGN_LRG.exe" %out% -MODE=2
 #AutoIt3Wrapper_UseUpx=n
 #AutoIt3Wrapper_Run_After=""%scitedir%\..\Extras\AutoUPX.exe" "%out%""
+
+#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.2.12.1
+ Author:         M. Schindlauer
+
+ Script Function:
+	Template AutoIt script.
+
+#ce ----------------------------------------------------------------------------
 
 ; Script Start - Add your code below here
 $Titel = "ISS Script Saver"
@@ -88,7 +99,6 @@ MsgBox(4096 + 16,$Titel,"Inno Setup Compiler konnte nicht aktiviert werden!" & c
 Exit(4)
 EndIf
 
-Local $iInt =0
 
 SendKeepActive($issname & " - Inno Setup Compiler")
 
@@ -102,17 +112,17 @@ Sleep(500)
 Send ("a")
 EndIf
 
+
 Local $i = 0
-While $i<30
+For $i = 1 To 30
 	Sleep(100)
-$i=$i+1
-if WinExists("Speichern unter", "") Then
-	ExitLoop
-EndIf
-if WinExists("Save as", "") Then
-	ExitLoop
-EndIf
-WEnd
+	if WinExists("Speichern unter", "") Then
+		ExitLoop
+	EndIf
+	if WinExists("Save as", "") Then
+		ExitLoop
+	EndIf
+Next
 
 if Not WinExists("Speichern unter") and Not WinExists("Save as") Then
 MsgBox(16,$Titel,"Aktuelles ISS Script:" & Chr(13) & $issname & Chr(13) & "konnte nicht gesichert werden!")
@@ -139,10 +149,11 @@ $Savetxtde = "Speichern unter bestätigen"
 $Savetxten = "Confirm Save As"
 EndIf
 
+
+
 $i = 0
-While $i<30
+For $i = 1 To 30
 	Sleep(100)
-$i=$i+1
 if WinExists($Savetxtde, "") Then
 	SendKeepActive($Savetxtde, "")
 	if WinExists($Savetxtde, "") Then
@@ -151,6 +162,7 @@ if WinExists($Savetxtde, "") Then
 	if WinExists($Savetxtde, "") Then
 	send ("y")
 	EndIf
+	WinWaitClose($Savetxtde,"",3)
 	ExitLoop
 EndIf
 if WinExists($Savetxten, "") Then
@@ -161,11 +173,17 @@ if WinExists($Savetxten, "") Then
 	if WinExists($Savetxten, "") Then
 	send ("j")
 	EndIf
+	WinWaitClose($Savetxten,"",3)
 	ExitLoop
 EndIf
-WEnd
+Next
 
-Exit
+if WinExists($Savetxtde) or WinExists($Savetxten) Then
+MsgBox(16,$Titel,"Aktuelles ISS Script:" & Chr(13) & $issname & Chr(13) & "konnte nicht gesichert werden!")
+Exit(4)
+EndIf
+
+Exit(0)
 
 
 
