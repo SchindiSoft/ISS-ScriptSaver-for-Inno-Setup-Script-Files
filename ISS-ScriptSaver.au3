@@ -101,8 +101,6 @@ Sleep(500)
 Send ("a")
 EndIf
 
-
-Local $i = 0
 For $i = 1 To 30
 	Sleep(100)
 	if WinExists("Speichern unter", "") Then
@@ -138,9 +136,6 @@ $Savetxtde = "Speichern unter bestätigen"
 $Savetxten = "Confirm Save As"
 EndIf
 
-
-
-$i = 0
 For $i = 1 To 30
 	Sleep(100)
 if WinExists($Savetxtde, "") Then
